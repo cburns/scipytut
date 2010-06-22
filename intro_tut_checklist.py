@@ -10,7 +10,11 @@ If it does NOT say 'OK' at the end, copy the *entire* output of the run and
 send it to the course instructor for help.
 
 Note: it NEEDS nose to run at all, so if you don't have nose, it will fail
-completely to even start.
+completely to even start.  You can download and install nose from the Python
+Package Index:
+
+    http://pypi.python.org/pypi/nose
+
 """
 
 # Standard library imports
@@ -145,7 +149,7 @@ def test_loadtxt():
     a1 = np.loadtxt(c)
     a2 = np.array([[ 0.,  1.],
                    [ 2.,  3.]])
-    yield npt.assert_array_equal,a1,a2
+    yield npt.assert_array_equal, a1, a2
 
     d = StringIO("M 21 72\nF 35 58")
     a1 = np.loadtxt(d, dtype={'names': ('gender', 'age', 'weight'),
@@ -153,12 +157,12 @@ def test_loadtxt():
     
     a2 = np.array([('M', 21, 72.0), ('F', 35, 58.0)],
                   dtype=[('gender', '|S1'), ('age', '<i4'), ('weight', '<f4')])
-    yield npt.assert_array_equal,a1,a2
+    yield npt.assert_array_equal, a1, a2
 
     c = StringIO("1,0,2\n3,0,4")
     x,y = np.loadtxt(c, delimiter=',', usecols=(0,2), unpack=True)
-    yield npt.assert_array_equal,x,np.array([ 1.,  3.])
-    yield npt.assert_array_equal,y,np.array([ 2.,  4.])
+    yield npt.assert_array_equal, x, np.array([ 1.,  3.])
+    yield npt.assert_array_equal, y, np.array([ 2.,  4.])
 
 
 def test_plot():
@@ -190,7 +194,7 @@ def main():
     # use for their storage.  By default, it is removed at the end.
     global TESTDIR
     cwd = os.getcwd()
-    TESTDIR = tempfile.mkdtemp(prefix='tmp-testdata-',dir=cwd)
+    TESTDIR = tempfile.mkdtemp(prefix='tmp-testdata-', dir=cwd)
     
     print "Running tests:"
     # This call form is ipython-friendly
@@ -216,11 +220,13 @@ mailing list:
 
     http://mail.scipy.org/mailman/listinfo/scipy-user
 
-but feel free to also CC directly: Fernando.Perez@berkeley.edu
-"""
+but feel free to also CC directly:  cburns at berkeley dot edu
+
+    """
+
     sys_info()
 
-    
+
 #-----------------------------------------------------------------------------
 if __name__ == '__main__':
     main()
